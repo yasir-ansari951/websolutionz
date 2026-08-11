@@ -14,7 +14,6 @@ export function Navbar() {
   const [active, setActive] = useState("#home");
   const [open, setOpen] = useState(false);
 
-  // hide on scroll down, show on scroll up + glass after threshold
   useEffect(() => {
     let last = window.scrollY;
     const onScroll = () => {
@@ -28,7 +27,6 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // active section tracking
   useEffect(() => {
     const obs = new IntersectionObserver(
       (entries) => {
@@ -45,7 +43,6 @@ export function Navbar() {
     return () => obs.disconnect();
   }, []);
 
-  // lock scroll when mobile menu open
   useEffect(() => {
     const lenis = getLenis();
     if (open) lenis?.stop();
@@ -54,7 +51,6 @@ export function Navbar() {
 
   const go = (href: string) => {
     setOpen(false);
-    // wait for menu close before scrolling
     window.setTimeout(() => scrollToId(href), open ? 350 : 0);
   };
 
@@ -68,11 +64,12 @@ export function Navbar() {
       >
         <nav
           className={cn(
-            "flex w-full max-w-7xl items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 sm:px-6",
+            "flex w-full max-w-[1280px] items-center justify-between rounded-full px-4 py-2.5 transition-all duration-500 sm:px-6",
             scrolled
               ? "glass-strong shadow-[0_8px_40px_rgba(0,0,0,0.5)]"
               : "border border-transparent bg-transparent",
           )}
+          aria-label="Main navigation"
         >
           <div onClick={() => go("#home")}>
             <Logo markSize={36} textSize="text-[clamp(16px,2vw,20px)]" />
@@ -93,6 +90,7 @@ export function Navbar() {
                     "group relative font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-300",
                     active === link.href ? "text-white" : "text-mist hover:text-white",
                   )}
+                  aria-current={active === link.href ? "page" : undefined}
                 >
                   <span className="mr-1 text-brand/70">{link.index}</span>
                   {link.label}
@@ -127,7 +125,8 @@ export function Navbar() {
 
             <button
               onClick={() => setOpen((o) => !o)}
-              aria-label="Menu"
+              aria-label={open ? "Close menu" : "Open menu"}
+              aria-expanded={open}
               data-cursor="link"
               className="flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full border border-white/10 lg:hidden"
             >
@@ -153,6 +152,9 @@ export function Navbar() {
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
             transition={{ duration: 0.7, ease: EASE }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Navigation menu"
           >
             <div className="pointer-events-none absolute left-1/2 top-1/2 h-[50vmin] w-[50vmin] -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand/20 blur-[120px]" />
             <div className="relative flex flex-col gap-2">
@@ -182,7 +184,7 @@ export function Navbar() {
               className="relative mt-10 flex flex-wrap gap-x-6 gap-y-2 font-mono text-[11px] uppercase tracking-[0.2em] text-mist"
             >
               <a href="mailto:info.websolutinz@gmail.com">info.websolutinz@gmail.com</a>
-              <a href="tel:+1238679342">+1 (238) 679 342</a>
+              <a href="https://wa.me/923194158162">+92 319 415 8162</a>
             </motion.div>
           </motion.div>
         )}

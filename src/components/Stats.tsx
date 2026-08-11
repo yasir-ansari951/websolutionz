@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Stats() {
   return (
-    <section className="relative overflow-hidden bg-ink py-20 sm:py-24">
+    <section className="relative overflow-hidden bg-ink py-24 sm:py-32">
       {/* ghost word */}
       <div className="pointer-events-none absolute inset-x-0 top-1/2 -translate-y-1/2 select-none text-center">
         <span className="font-display text-[28vw] uppercase leading-none text-stroke-ghost">
@@ -14,10 +14,10 @@ export function Stats() {
         </span>
       </div>
 
-      <div className="relative mx-auto w-full max-w-[1600px] px-6 sm:px-10">
+      <div className="relative mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <SectionLabel index="08" title="By The Numbers" />
 
-        <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-3">
           {stats.map((s, i) => (
             <motion.div
               key={s.label}

@@ -44,7 +44,7 @@ function StoryWord({
       <span className="mb-5 font-mono text-[11px] uppercase tracking-[0.4em] text-brand">
         0{index + 1} / 0{count}
       </span>
-      <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2.6rem,10.5vw,8.5rem)] text-white text-glow-red">
+      <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2.6rem,10vw,8rem)] text-white text-glow-red">
         {word}
       </h2>
       <p className="mt-6 max-w-md font-mono text-xs uppercase tracking-[0.2em] text-mist sm:text-sm">
@@ -74,7 +74,7 @@ export function BrandStory() {
         />
 
         {/* top label */}
-        <div className="relative z-10 mx-auto flex w-full max-w-[1600px] items-center justify-between px-6 pt-28 font-mono text-[11px] uppercase tracking-[0.3em] text-mist sm:px-10">
+        <div className="relative z-10 mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 pt-28 font-mono text-[11px] uppercase tracking-[0.3em] text-mist sm:px-8">
           <span className="flex items-center gap-3">
             <span className="text-brand">§</span> The Method
           </span>
@@ -96,7 +96,7 @@ export function BrandStory() {
         </div>
 
         {/* progress bar */}
-        <div className="relative z-10 mx-auto mb-10 w-full max-w-[1600px] px-6 sm:px-10">
+        <div className="relative z-10 mx-auto mb-10 w-full max-w-[1280px] px-5 sm:px-8">
           <div className="h-px w-full bg-white/10">
             <motion.div style={{ width: barWidth }} className="h-full bg-brand" />
           </div>

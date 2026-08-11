@@ -6,6 +6,8 @@ import { Magnetic, MaskReveal, SectionLabel } from "./ui";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 
+const WHATSAPP_NUMBER = "923194158162";
+
 const projectTypes = [
   "Website",
   "Web App",
@@ -50,25 +52,16 @@ export function Contact() {
     setSubmitting(true);
     setError(false);
     try {
-      const res = await fetch("https://formspree.io/f/mzdnzakw", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: form.name,
-          email: form.email,
-          phone: form.phone,
-          projectType: form.project,
-          message: form.message,
-        }),
-      });
-      if (res.ok) {
-        setSent(true);
-      } else {
-        setError(true);
-      }
+      const lines = [
+        `Name: ${form.name}`,
+        `Email: ${form.email}`,
+        form.phone ? `Phone: ${form.phone}` : "",
+        form.project ? `Project Type: ${form.project}` : "",
+        `Message: ${form.message}`,
+      ].filter(Boolean);
+      const text = encodeURIComponent(lines.join("\n"));
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${text}`, "_blank");
+      setSent(true);
     } catch {
       setError(true);
     } finally {
@@ -79,15 +72,15 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="relative overflow-hidden bg-ink py-20 sm:py-24"
+      className="relative overflow-hidden bg-ink py-24 sm:py-32"
     >
       <div className="pointer-events-none absolute -left-40 top-1/3 h-[40vmin] w-[40vmin] rounded-full bg-brand/20 blur-[150px]" />
 
-      <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-14 px-6 sm:px-10 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
-        {/* ── left ── */}
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-14 px-5 sm:px-8 lg:grid-cols-[1fr_1.1fr] lg:gap-16">
+        {/* left */}
         <div>
           <SectionLabel index="09" title="Contact" />
-          <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5.5vw,5rem)] text-white">
+          <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5.5vw,4.5rem)] text-white">
             <MaskReveal>Let's build</MaskReveal>
             <br />
             <MaskReveal delay={0.08}>something</MaskReveal>
@@ -127,11 +120,11 @@ export function Contact() {
                 Phone
               </div>
               <a
-                href="tel:+1238679342"
+                href="https://wa.me/923194158162"
                 data-cursor="link"
                 className="font-display text-2xl uppercase text-white transition-colors hover:text-brand sm:text-3xl"
               >
-                +1 (238) 679 342
+                +92 319 415 8162
               </a>
             </div>
 
@@ -152,7 +145,7 @@ export function Contact() {
           </motion.div>
         </div>
 
-        {/* ── right — card ── */}
+        {/* right — card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -162,7 +155,7 @@ export function Contact() {
         >
           <AnimatePresence mode="wait">
             {sent ? (
-              /* ── success state ── */
+              /* success state */
               <motion.div
                 key="success"
                 initial={{ opacity: 0, scale: 0.96 }}
@@ -182,8 +175,8 @@ export function Contact() {
                   Message sent
                 </h3>
                 <p className="mt-4 max-w-xs text-sm leading-relaxed text-mist">
-                  Thanks for reaching out. We'll get back to you within
-                  24 hours — sometimes faster.
+                  Your message has been prepared. WhatsApp should open shortly
+                  — we'll get back to you quickly.
                 </p>
                 <button
                   onClick={() => {
@@ -198,7 +191,7 @@ export function Contact() {
                 </button>
               </motion.div>
             ) : (
-              /* ── form card ── */
+              /* form card */
               <motion.form
                 key="form"
                 onSubmit={submit}
@@ -329,8 +322,8 @@ export function Contact() {
                   {/* error */}
                   {error && (
                     <div className="rounded-full border border-red-500/25 bg-red-500/8 px-5 py-3 text-center font-mono text-[11px] uppercase tracking-[0.15em] text-red-400">
-                      Something went wrong. Please try again or email us
-                      directly.
+                      Something went wrong. Please try again or message us on
+                      WhatsApp directly.
                     </div>
                   )}
                 </div>
@@ -359,11 +352,13 @@ export function Contact() {
                     </button>
                   </Magnetic>
                   <a
-                    href="mailto:info.websolutinz@gmail.com"
+                    href={`https://wa.me/${WHATSAPP_NUMBER}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor="link"
                     className="group inline-flex items-center gap-2.5 rounded-full border border-white/12 px-6 py-3.5 font-mono text-[11px] uppercase tracking-[0.18em] text-white/80 transition-colors hover:border-white/30 hover:text-white"
                   >
-                    Or email us
+                    Or WhatsApp us
                     <span className="h-1.5 w-1.5 rounded-full bg-brand transition-transform duration-300 group-hover:scale-150" />
                   </a>
                 </div>
@@ -371,8 +366,8 @@ export function Contact() {
                 {/* bottom note */}
                 <div className="border-t border-white/6 px-6 py-3.5 sm:px-8">
                   <p className="font-mono text-[9px] uppercase tracking-[0.18em] text-white/30">
-                    Your data is safe. We never share your information with third
-                    parties.
+                    Your message will be sent via WhatsApp. We never share your
+                    information with third parties.
                   </p>
                 </div>
               </motion.form>

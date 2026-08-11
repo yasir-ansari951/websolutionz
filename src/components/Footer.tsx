@@ -11,7 +11,7 @@ export function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-white/10 bg-ink">
-      <div className="mx-auto w-full max-w-[1600px] px-6 py-12 sm:px-10 sm:py-16">
+      <div className="mx-auto w-full max-w-[1280px] px-5 py-16 sm:px-8 sm:py-20">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4 lg:grid-cols-[1.6fr_1fr_1fr_1.2fr]">
           {/* brand */}
           <div className="col-span-2 lg:col-span-1">
@@ -55,6 +55,8 @@ export function Footer() {
                 <li key={s.label}>
                   <a
                     href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-cursor="link"
                     className="group flex items-center gap-2 font-display text-lg uppercase text-white/80 transition-colors hover:text-white"
                   >
@@ -82,11 +84,11 @@ export function Footer() {
                 info.websolutinz@gmail.com
               </a>
               <a
-                href="tel:+10000000000"
+                href="https://wa.me/923194158162"
                 data-cursor="link"
                 className="block font-display text-lg uppercase text-white/80 transition-colors hover:text-brand"
               >
-                +1 (238) 679 342
+                +92 319 415 8162
               </a>
               <p className="pt-2 text-sm text-mist">Remote · Worldwide</p>
             </div>
@@ -110,7 +112,7 @@ export function Footer() {
 
       {/* bottom bar */}
       <div className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-[1600px] flex-col items-center justify-between gap-4 px-6 py-6 font-mono text-[10px] uppercase tracking-[0.2em] text-mist sm:flex-row sm:px-10">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center justify-between gap-4 px-5 py-6 font-mono text-[10px] uppercase tracking-[0.2em] text-mist sm:flex-row sm:px-8">
           <span>© 2026 WEBZ SLOUTINZ — All rights reserved</span>
           <motion.button
             onClick={scrollToTop}

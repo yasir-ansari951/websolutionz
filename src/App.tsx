@@ -1,7 +1,7 @@
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
-import { useEffect } from "react";
+import { Component, useEffect, type ReactNode } from "react";
 import { setLenis } from "@/lib/smoothScroll";
 import { ScrollProgress } from "@/components/ui";
 import { Cursor } from "@/components/Cursor";
@@ -18,6 +18,40 @@ import { Contact } from "@/components/Contact";
 import { Footer } from "@/components/Footer";
 
 gsap.registerPlugin(ScrollTrigger);
+
+class ErrorBoundary extends Component<
+  { children: ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="flex min-h-screen flex-col items-center justify-center bg-ink px-6 text-center">
+          <h1 className="font-display text-4xl uppercase text-white sm:text-5xl">
+            Something went wrong
+          </h1>
+          <p className="mt-4 max-w-md text-base text-mist">
+            An unexpected error occurred. Please refresh the page or contact us
+            directly.
+          </p>
+          <a
+            href="mailto:info.websolutinz@gmail.com"
+            className="mt-8 rounded-full bg-brand px-6 py-3 font-mono text-xs uppercase tracking-[0.2em] text-white"
+          >
+            Contact Support
+          </a>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 export default function App() {
   useEffect(() => {
@@ -46,7 +80,10 @@ export default function App() {
   }, []);
 
   return (
-    <>
+    <ErrorBoundary>
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <Cursor />
       <ScrollProgress />
       <div className="grain-layer" aria-hidden="true" />
@@ -54,7 +91,7 @@ export default function App() {
 
       <Navbar />
 
-      <main className="relative">
+      <main id="main-content" className="relative">
         <Hero />
         <BrandStory />
         <Services />
@@ -67,6 +104,6 @@ export default function App() {
       </main>
 
       <Footer />
-    </>
+    </ErrorBoundary>
   );
 }

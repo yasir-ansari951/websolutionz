@@ -136,6 +136,9 @@ function CaseStudyModal({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      role="dialog"
+      aria-modal="true"
+      aria-label={`${project.name} case study`}
     >
       <div className="absolute inset-0 bg-ink/85 backdrop-blur-xl" onClick={onClose} />
 
@@ -144,13 +147,13 @@ function CaseStudyModal({
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 30, opacity: 0 }}
         transition={{ duration: 0.6, ease: EASE }}
-        className="relative m-auto flex max-h-[92svh] w-[94vw] max-w-6xl flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#0c0c0c] shadow-[0_20px_90px_rgba(0,0,0,0.8)] lg:flex-row"
+        className="relative m-auto flex max-h-[92svh] w-[94vw] max-w-5xl flex-col overflow-hidden rounded-[20px] border border-white/10 bg-[#0c0c0c] shadow-[0_20px_90px_rgba(0,0,0,0.8)] lg:flex-row"
       >
         <button
           onClick={onClose}
           data-cursor="link"
           className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full bg-white text-ink transition-colors hover:bg-brand hover:text-white"
-          aria-label="Close"
+          aria-label="Close case study"
         >
           ✕
         </button>
@@ -305,7 +308,7 @@ export function Work() {
   return (
     <section id="work" ref={sectionRef} className="relative bg-ink">
       <div ref={wrapRef} className="relative h-[100svh] w-full overflow-hidden">
-        <header className="absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-[1600px] items-end justify-between px-5 pt-18 sm:px-10 sm:pt-20">
+        <header className="absolute inset-x-0 top-0 z-20 mx-auto flex w-full max-w-[1280px] items-end justify-between px-5 pt-20 sm:px-8 sm:pt-24">
           <SectionLabel index="04" title="Selected Work" />
           <div className="hidden items-center gap-4 font-mono text-[11px] uppercase tracking-[0.2em] text-mist sm:flex">
             <span className="text-brand">
@@ -318,7 +321,7 @@ export function Work() {
 
         <div
           ref={trackRef}
-          className="absolute left-0 top-1/2 flex -translate-y-1/2 items-stretch gap-4 px-5 sm:gap-6 sm:px-10"
+          className="absolute left-0 top-1/2 flex -translate-y-1/2 items-stretch gap-4 px-5 sm:gap-6 sm:px-8"
         >
           {projects.map((p, i) => (
             <ProjectCard key={p.id} project={p} index={i} onOpen={setSelected} />
@@ -349,7 +352,7 @@ export function Work() {
           </div>
         </div>
 
-        <div className="absolute inset-x-0 bottom-6 z-20 mx-auto w-full max-w-[1600px] px-5 sm:bottom-8 sm:px-10">
+        <div className="absolute inset-x-0 bottom-6 z-20 mx-auto w-full max-w-[1280px] px-5 sm:bottom-8 sm:px-8">
           <div className="h-px w-full bg-white/10">
             <div ref={progressRef} style={{ width: "0%" }} className="h-full bg-brand" />
           </div>

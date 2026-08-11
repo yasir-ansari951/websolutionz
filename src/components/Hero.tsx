@@ -104,7 +104,7 @@ export function Hero() {
       </motion.div>
 
       {/* top label */}
-      <div className="relative z-10 mx-auto flex w-full max-w-[1600px] items-center justify-between px-5 pt-20 font-mono text-[10px] uppercase tracking-[0.3em] text-mist sm:px-10 sm:pt-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-[1280px] items-center justify-between px-5 pt-24 font-mono text-[10px] uppercase tracking-[0.3em] text-mist sm:px-8 sm:pt-28">
         <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
           § Creative Studio
         </motion.span>
@@ -123,15 +123,15 @@ export function Hero() {
         style={{ x: hx, y: hy }}
         initial="hidden"
         animate="show"
-        className="relative z-10 mx-auto flex w-full max-w-[1600px] flex-1 flex-col justify-center px-5 pb-10 pt-8 sm:px-10 sm:pb-14 sm:pt-10"
+        className="relative z-10 mx-auto flex w-full max-w-[1280px] flex-1 flex-col justify-center px-5 pb-12 pt-8 sm:px-8 sm:pb-16 sm:pt-10"
       >
-        <h1 className="font-display uppercase leading-[0.88] tracking-tight text-[clamp(2.2rem,9.5vw,7.8rem)]">
+        <h1 className="font-display uppercase leading-[0.88] tracking-tight text-[clamp(2.4rem,9vw,7.5rem)]">
           <SplitChars text="WE BUILD" delay={0.1} className="text-white" />
           <SplitChars text="DIGITAL" delay={0.35} className="text-white text-glow-red" />
           <SplitChars text="EXPERIENCES" delay={0.6} className="text-stroke-red" />
         </h1>
 
-        <div className="mt-6 flex flex-col gap-6 sm:mt-8 sm:flex-row sm:items-end sm:justify-between">
+        <div className="mt-8 flex flex-col gap-6 sm:mt-10 sm:flex-row sm:items-end sm:justify-between">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -180,7 +180,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.25 }}
-        className="relative z-10 mx-auto hidden w-full max-w-[1600px] items-center justify-between px-5 pb-5 font-mono text-[10px] uppercase tracking-[0.3em] text-mist sm:flex sm:px-10"
+        className="relative z-10 mx-auto hidden w-full max-w-[1280px] items-center justify-between px-5 pb-5 font-mono text-[10px] uppercase tracking-[0.3em] text-mist sm:flex sm:px-8"
       >
         <div className="flex items-center gap-3">
           <span className="relative flex h-9 w-5 justify-center rounded-full border border-white/20 pt-1.5">
@@ -196,7 +196,7 @@ export function Hero() {
       </motion.div>
 
       {/* marquee strip */}
-      <div className="relative z-10 border-y border-white/10 bg-white/[0.02] py-3.5">
+      <div className="relative z-10 border-y border-white/10 bg-white/[0.02] py-4">
         <Marquee>
           {services.map((s) => (
             <MarqueeItem key={s.no}>{s.title}</MarqueeItem>

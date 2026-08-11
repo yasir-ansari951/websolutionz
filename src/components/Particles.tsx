@@ -14,6 +14,7 @@ type P = {
 
 /**
  * Canvas particle field with mouse parallax. Lightweight and GPU-friendly.
+ * Reduces density on mobile and respects prefers-reduced-motion.
  */
 export function Particles({
   className,
@@ -35,6 +36,7 @@ export function Particles({
     if (!ctx) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const isMobile = window.innerWidth < 768;
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
     let w = 0;
     let h = 0;
@@ -62,7 +64,8 @@ export function Particles({
       canvas.width = Math.max(1, Math.floor(w * dpr));
       canvas.height = Math.max(1, Math.floor(h * dpr));
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      const count = Math.min(170, Math.max(36, Math.floor(w * h * density)));
+      const mobileDensity = isMobile ? density * 0.5 : density;
+      const count = Math.min(170, Math.max(24, Math.floor(w * h * mobileDensity)));
       parts = Array.from({ length: count }, spawn);
     };
 
@@ -123,6 +126,7 @@ export function Particles({
     <canvas
       ref={canvasRef}
       className={cn("absolute inset-0 h-full w-full", className)}
+      aria-hidden="true"
     />
   );
 }

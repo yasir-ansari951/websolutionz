@@ -4,7 +4,6 @@ import {
   useMotionValue,
   useScroll,
   useSpring,
-  type Variants,
 } from "framer-motion";
 import {
   useEffect,
@@ -117,26 +116,6 @@ export function MaskReveal({
     </span>
   );
 }
-
-/* ----------------------------------------------------------------
-   Stagger container helpers
------------------------------------------------------------------ */
-export const staggerParent: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
-  },
-};
-
-export const fadeUpChild: Variants = {
-  hidden: { opacity: 0, y: 26, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-  },
-};
 
 /* ----------------------------------------------------------------
    ScrollProgress — top progress bar driven by window scroll

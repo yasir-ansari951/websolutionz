@@ -6,12 +6,12 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function WhyChooseUs() {
   return (
-    <section className="relative overflow-hidden bg-ink py-20 sm:py-24">
-      <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-10">
+    <section className="relative overflow-hidden bg-ink py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <SectionLabel index="06" title="Why Choose Us" />
-            <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.6rem)] text-white">
+            <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.2rem)] text-white">
               <MaskReveal>Built to</MaskReveal>
               <br />
               <MaskReveal delay={0.1} className="text-stroke-red">
@@ -31,7 +31,7 @@ export function WhyChooseUs() {
           </motion.p>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {whyItems.map((item, i) => (
             <motion.div
               key={item.title}

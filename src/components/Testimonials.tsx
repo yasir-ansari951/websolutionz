@@ -20,7 +20,7 @@ function Card({
       className="group relative overflow-hidden rounded-2xl glass p-6 transition-all duration-500 hover:-translate-y-1 hover:border-brand/35 hover:bg-white/[0.045] sm:p-7"
     >
       <div className="pointer-events-none absolute -right-14 -top-14 h-36 w-36 rounded-full bg-brand/20 opacity-0 blur-3xl transition-opacity duration-500 group-hover:opacity-100" />
-      
+
       <div className="flex items-center justify-between">
         <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-brand">
           Verified Review
@@ -57,11 +57,11 @@ function Card({
 
 export function Testimonials() {
   return (
-    <section className="relative overflow-hidden bg-ink2 py-20 sm:py-24">
-      <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-10">
+    <section className="relative overflow-hidden bg-ink2 py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <SectionLabel index="07" title="Testimonials" />
-        <div className="mt-7 grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.4rem)] text-white">
+        <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.2rem)] text-white">
             <MaskReveal>Client</MaskReveal>
             <br />
             <MaskReveal delay={0.1} className="text-stroke-red">
@@ -80,7 +80,7 @@ export function Testimonials() {
           </motion.p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
           {testimonials.map((t, i) => (
             <Card key={t.name} t={t} index={i} />
           ))}

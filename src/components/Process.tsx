@@ -6,7 +6,7 @@ const EASE = [0.16, 1, 0.3, 1] as const;
 
 export function Process() {
   return (
-    <section id="process" className="relative overflow-hidden bg-ink2 py-20 sm:py-24">
+    <section id="process" className="relative overflow-hidden bg-ink2 py-24 sm:py-32">
       {/* floating graphic */}
       <div className="pointer-events-none absolute right-[8%] top-[20%] hidden lg:block">
         <motion.div
@@ -18,11 +18,11 @@ export function Process() {
         </motion.div>
       </div>
 
-      <div className="mx-auto grid w-full max-w-[1600px] grid-cols-1 gap-12 px-6 sm:px-10 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-[1fr_1.3fr] lg:gap-20">
         {/* sticky header */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <SectionLabel index="05" title="The Process" />
-          <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.4rem)] text-white">
+          <h2 className="mt-8 font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.2rem)] text-white">
             <MaskReveal>How we</MaskReveal>
             <br />
             <MaskReveal delay={0.08}>make it</MaskReveal>

@@ -67,11 +67,11 @@ function ServiceCard({ service, index }: { service: Service; index: number }) {
 
 export function Services() {
   return (
-    <section id="services" className="relative bg-ink py-20 sm:py-24">
-      <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-10">
+    <section id="services" className="relative bg-ink py-24 sm:py-32">
+      <div className="mx-auto w-full max-w-[1280px] px-5 sm:px-8">
         <SectionLabel index="03" title="What We Do" />
-        <div className="mt-7 grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
-          <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5.2vw,4.6rem)] text-white">
+        <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-[1.15fr_0.85fr] lg:items-end">
+          <h2 className="font-display uppercase leading-[0.9] tracking-tight text-[clamp(2rem,5vw,4.2rem)] text-white">
             <MaskReveal>Full-service</MaskReveal>
             <br />
             <MaskReveal delay={0.1} className="text-stroke-red">
@@ -90,7 +90,7 @@ export function Services() {
           </motion.p>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 xl:grid-cols-3">
           {services.map((s, i) => (
             <ServiceCard key={s.no} service={s} index={i} />
           ))}

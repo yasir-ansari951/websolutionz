@@ -3,14 +3,17 @@ import { useEffect, useRef } from "react";
 /**
  * Custom cursor — red glowing ring with a trailing lag, an instant dot,
  * and an interactive hover scale. Active only on fine-pointer devices.
+ * Falls back gracefully on touch devices.
  */
 export function Cursor() {
   const ringRef = useRef<HTMLDivElement>(null);
   const dotRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!window.matchMedia("(pointer: fine)").matches) return;
+    const isFinePointer = window.matchMedia("(pointer: fine)").matches;
+    if (!isFinePointer) return;
 
+    const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     document.body.classList.add("has-cursor");
 
     let mx = window.innerWidth / 2;
@@ -32,14 +35,15 @@ export function Cursor() {
       }
       if (!shown) {
         shown = true;
-        ringRef.current && (ringRef.current.style.opacity = "1");
-        dotRef.current && (dotRef.current.style.opacity = "1");
+        if (ringRef.current) ringRef.current.style.opacity = "1";
+        if (dotRef.current) dotRef.current.style.opacity = "1";
       }
     };
 
     const loop = () => {
-      rx += (mx - rx) * 0.18;
-      ry += (my - ry) * 0.18;
+      const smoothing = prefersReduced ? 0.3 : 0.18;
+      rx += (mx - rx) * smoothing;
+      ry += (my - ry) * smoothing;
       if (ringRef.current) {
         ringRef.current.style.transform = `translate3d(${rx}px, ${ry}px, 0)`;
       }

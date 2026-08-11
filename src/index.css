@@ -58,6 +58,25 @@
   ::-webkit-scrollbar-thumb:hover {
     background: #e10613;
   }
+  /* Skip to content link */
+  .skip-link {
+    position: fixed;
+    top: -100%;
+    left: 16px;
+    z-index: 99999;
+    padding: 12px 24px;
+    background: #e10613;
+    color: #fff;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    border-radius: 0 0 8px 8px;
+    transition: top 0.2s ease;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
 }
 
 /* ---- Custom cursor: hide native on fine pointers ---- */
@@ -323,6 +342,7 @@ body.cursor-hover .cursor-dot {
   color: var(--color-mist);
 }
 
+/* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   .grain-layer,
   .animate-floaty,
@@ -331,5 +351,12 @@ body.cursor-hover .cursor-dot {
   .animate-marquee-rev,
   .shimmer {
     animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
